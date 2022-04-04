@@ -1,8 +1,10 @@
-package com.kreitek.pets;
+package main.java.com.kreitek.pets;
 
-import com.kreitek.pets.controllers.CatController;
-import com.kreitek.pets.controllers.ControllerFactory;
-import com.kreitek.pets.controllers.DogController;
+
+import main.java.com.kreitek.pets.controllers.CatController;
+import main.java.com.kreitek.pets.controllers.ControllerFactory;
+import main.java.com.kreitek.pets.controllers.DogController;
+
 import java.util.Scanner;
 
 public class PetApp {
@@ -34,7 +36,7 @@ public class PetApp {
                                 response = catController.executeGet();
                                 break;
                             default:
-                                throw new BadCommandException();
+                                throw new com.kreitek.pets.BadCommandException();
                         }
                         System.out.println(response);
                         break;
@@ -50,32 +52,32 @@ public class PetApp {
                                 response = catController.executePut(params[1], params[2], params[3]);
                                 break;
                             default:
-                                throw new BadCommandException();
+                                throw new com.kreitek.pets.BadCommandException();
                         }
                         System.out.println(response);
                 }
-            } catch (BadCommandException e) {
+            } catch (com.kreitek.pets.BadCommandException e) {
                 System.out.println("Bad command error");
             }
         }
         System.out.println("Pet app has been ended"); // TODO Logger
     }
 
-    private static String getGetParam(String[] commandArgs) throws BadCommandException {
+    private static String getGetParam(String[] commandArgs) throws com.kreitek.pets.BadCommandException {
         if (commandArgs.length == 2) {
             return commandArgs[1];
         } else {
-            throw new BadCommandException();
+            throw new com.kreitek.pets.BadCommandException();
         }
     }
 
-    private static String[] getPutParams(String[] commandArgs) throws BadCommandException {
+    private static String[] getPutParams(String[] commandArgs) throws com.kreitek.pets.BadCommandException {
         if (commandArgs.length <= 1) {
-            throw new BadCommandException();
+            throw new com.kreitek.pets.BadCommandException();
         }
         String[] parameters = commandArgs[1].split(";");
         if (parameters.length < 4) {
-            throw new BadCommandException();
+            throw new com.kreitek.pets.BadCommandException();
         }
         return parameters;
     }

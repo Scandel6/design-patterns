@@ -1,7 +1,8 @@
-package com.kreitek.pets.infraestructure.bd;
+package main.java.com.kreitek.pets.infraestructure.bd;
 
-import com.kreitek.pets.domain.Cat;
-import com.kreitek.pets.domain.Dog;
+
+import main.java.com.kreitek.pets.domain.Cat;
+import main.java.com.kreitek.pets.domain.Dog;
 
 import java.util.ArrayList;
 import java.util.List;
