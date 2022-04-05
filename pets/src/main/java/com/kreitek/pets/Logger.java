@@ -15,6 +15,11 @@ public class Logger {
         System.out.println(s);
     }
 
+    public void info(String msg){
+        String s = String.format("[info] - " + msg);
+        System.out.println(s);
+    }
+
     public static Logger getInstance(){
         if (instance == null)
             synchronized (Logger.class){
