@@ -10,6 +10,11 @@ public class Logger {
         this.cont = 0;
     }
 
+    public void debug(String msg) {
+        String s = String.format("[debug][%d] - " + msg, ++cont);
+        System.out.println(s);
+    }
+
     public static Logger getInstance(){
         if (instance == null)
             synchronized (Logger.class){
