@@ -11,13 +11,13 @@ public class Logger {
     }
 
     public void debug(String msg) {
-        String s = String.format("[debug][%d] - " + msg, ++cont);
-        System.out.println(s);
+        String debugMessage = String.format("[debug][%d] - " + msg, ++cont);
+        System.out.println(debugMessage);
     }
 
     public void info(String msg){
-        String s = String.format("[info] - " + msg);
-        System.out.println(s);
+        String infoMessage = String.format("[info] - " + msg);
+        System.out.println(infoMessage);
     }
 
     public static Logger getInstance(){
