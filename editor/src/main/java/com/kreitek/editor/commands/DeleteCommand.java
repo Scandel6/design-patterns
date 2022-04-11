@@ -14,8 +14,8 @@ public class DeleteCommand implements Command {
 
     @Override
     public void execute(Document document) {
-        ArrayList <String> temp = (ArrayList<String>) document.peek().clone();
-        temp.remove(lineNumber);
-        document.add(temp);
+        ArrayList <String> newDocumentSnapshot = (ArrayList<String>) document.peek().clone();
+        newDocumentSnapshot.remove(lineNumber);
+        document.add(newDocumentSnapshot);
     }
 }

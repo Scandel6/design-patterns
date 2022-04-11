@@ -14,8 +14,8 @@ public class AppendCommand implements Command {
 
     @Override
     public void execute(Document document) {
-        ArrayList <String> temp = (ArrayList<String>) document.peek().clone();
-        temp.add(text);
-        document.add(temp);
+        ArrayList <String> newDocumentSnapshot = (ArrayList<String>) document.peek().clone();
+        newDocumentSnapshot.add(text);
+        document.add(newDocumentSnapshot);
     }
 }

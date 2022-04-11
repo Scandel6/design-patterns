@@ -16,11 +16,11 @@ public class UpdateCommand implements Command {
 
     @Override
     public void execute(Document document) {
-        ArrayList <String> temp = (ArrayList<String>) document.peek().clone();
-        if (temp.size() > lineNumber)
-            temp.set(lineNumber, text);
+        ArrayList <String> newDocumentSnapshot = (ArrayList<String>) document.peek().clone();
+        if (newDocumentSnapshot.size() > lineNumber)
+            newDocumentSnapshot.set(lineNumber, text);
         else
-            temp.add(text);
-        document.add(temp);
+            newDocumentSnapshot.add(text);
+        document.add(newDocumentSnapshot);
     }
 }
