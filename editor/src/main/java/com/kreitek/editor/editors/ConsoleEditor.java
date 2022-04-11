@@ -16,11 +16,7 @@ public class ConsoleEditor implements Editor {
     public static final String TEXT_YELLOW = "\u001B[33m";
 
     private final CommandFactory commandFactory = new CommandFactory();
-    private Document document;
-
-    public ConsoleEditor (){
-        this.document = new Document();
-    }
+    private Document document = new Document();
 
     @Override
     public void run() {
