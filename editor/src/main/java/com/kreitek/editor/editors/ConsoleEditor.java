@@ -1,5 +1,6 @@
 package com.kreitek.editor.editors;
 
+import com.kreitek.editor.Document;
 import com.kreitek.editor.commands.CommandFactory;
 import com.kreitek.editor.exceptions.BadCommandException;
 import com.kreitek.editor.exceptions.ExitException;
@@ -11,17 +12,15 @@ import java.util.Scanner;
 
 public class ConsoleEditor implements Editor {
     public static final String TEXT_RESET = "\u001B[0m";
-    public static final String TEXT_BLACK = "\u001B[30m";
     public static final String TEXT_RED = "\u001B[31m";
-    public static final String TEXT_GREEN = "\u001B[32m";
     public static final String TEXT_YELLOW = "\u001B[33m";
-    public static final String TEXT_BLUE = "\u001B[34m";
-    public static final String TEXT_PURPLE = "\u001B[35m";
-    public static final String TEXT_CYAN = "\u001B[36m";
-    public static final String TEXT_WHITE = "\u001B[37m";
 
     private final CommandFactory commandFactory = new CommandFactory();
-    private ArrayList<String> documentLines = new ArrayList<String>();
+    private Document document;
+
+    public ConsoleEditor (){
+        this.document = new Document();
+    }
 
     @Override
     public void run() {
@@ -30,18 +29,19 @@ public class ConsoleEditor implements Editor {
             String commandLine = waitForNewCommand();
             try {
                 Command command = commandFactory.getCommand(commandLine);
-                command.execute(documentLines);
+                command.execute(document);
             } catch (BadCommandException e) {
                 printErrorToConsole("Bad command");
             } catch (ExitException e) {
                 exit = true;
             }
-            showDocumentLines(documentLines);
+            showDocumentLines(document);
             showHelp();
         }
     }
 
-    private void showDocumentLines(ArrayList<String> textLines) {
+    private void showDocumentLines(Document document) {
+        ArrayList<String> textLines = document.peek();
         if (textLines.size() > 0){
             setTextColor(TEXT_YELLOW);
             printLnToConsole("START DOCUMENT ==>");

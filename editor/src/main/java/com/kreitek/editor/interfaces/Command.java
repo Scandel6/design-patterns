@@ -1,7 +1,7 @@
 package com.kreitek.editor.interfaces;
 
-import java.util.ArrayList;
+import com.kreitek.editor.Document;
 
 public interface Command {
-    void execute(ArrayList<String> documentLines);
+    void execute(Document document);
 }
